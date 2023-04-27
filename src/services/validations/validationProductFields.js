@@ -9,4 +9,5 @@ const validationName = (name) => {
 
 module.exports = {
   validationName,
+  
 };

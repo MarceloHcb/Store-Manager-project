@@ -12,7 +12,9 @@ const productListMock = [
     name: "Escudo do Capitão América"
   }
 ]
-
+const newProductMock = {      
+    name: "new Product"
+}
 const oneProductMock = {
     id: 3,
     name: "Escudo do Capitão América"
@@ -21,5 +23,6 @@ const oneProductMock = {
 
 module.exports = {
   productListMock,
-  oneProductMock
+  oneProductMock,
+  newProductMock
 }

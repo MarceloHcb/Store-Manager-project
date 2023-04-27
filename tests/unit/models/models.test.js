@@ -2,7 +2,7 @@ const {expect} = require('chai')
 const sinon = require('sinon')
 const {productModel} = require('../../../src/models')
 const connection = require('../../../src/models/connection')
-const { productListMock } = require('../unitMocks/productMock')
+const { productListMock, newProductMock } = require('../unitMocks/productMock')
 
 describe('Testes da camada Models',  () => {
   describe('Verifica a listagem dos produtos', () => {
@@ -19,7 +19,13 @@ describe('Testes da camada Models',  () => {
       const result = await productModel.getProductById(1)          
       expect(result).to.be.deep.equal(productListMock[0])
       sinon.restore();
-    })
-    
+    })    
   }) 
+  describe('Verifica a criação de um novo produto', () => {
+    it('Testa se ao criar um produto retorna o valor correto (ID)', async() => {
+      sinon.stub(connection,'execute').resolves([{ insertId: 50 }])
+      const result = await productModel.registerNewProduct(newProductMock)      
+      expect(result).to.equal(50);      
+    })
+  })
 })
