@@ -26,6 +26,7 @@ const deleteProduct = async (id) => {
   await connection.execute('DELETE FROM StoreManager.products WHERE id=?;', [id]);
   return `Product ${id} delected`;
 };
+
 module.exports = {
   getAllProducts,
   getProductById,
