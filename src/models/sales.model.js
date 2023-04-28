@@ -41,6 +41,7 @@ const registerSale = async (sales) => {
   
   return { id, itemsSold: [...sales] };
 };
+
 module.exports = {
   registerSale,
   getAllSales,
