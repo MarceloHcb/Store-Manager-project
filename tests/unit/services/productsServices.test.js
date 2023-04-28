@@ -17,7 +17,6 @@ describe('Testes da camada ProductsServices',  () => {
     })
     it('Testa a busca por ID', async() => {
       sinon.stub(productModel, 'getAllProducts').resolves(productListMock)
-
       const result = await productService.getProductById(2)
       expect(result.type).to.be.equal(null)
       expect(result.message).to.deep.equal(productListMock[1])

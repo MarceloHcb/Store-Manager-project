@@ -19,8 +19,16 @@ const registerNewProduct = async (name) => {
   return { type: null, message: newProduct };
 };
 
+const updateProduct = async (id, name) => {
+  const error = validationName(name);
+  if (error.type) return error;
+  const newProduct = await productModel.updateProduct(id, name);  
+  return { type: null, message: newProduct };
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   registerNewProduct,
+  updateProduct,
 };

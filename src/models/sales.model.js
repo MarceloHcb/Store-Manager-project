@@ -29,7 +29,7 @@ const registerDate = async () => {
 };
 
 const registerSale = async (sales) => {
-  const [{ id }] = await registerDate();  
+  const [{ id }] = await registerDate();
   const promises = sales.map((sale) => {
     const { productId, quantity } = sale;
     return connection
@@ -45,4 +45,5 @@ module.exports = {
   registerSale,
   getAllSales,
   getSaleById,
+  registerDate,
 };
