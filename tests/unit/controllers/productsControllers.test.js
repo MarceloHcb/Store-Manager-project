@@ -7,7 +7,7 @@ const {productController} = require('../../../src/controllers')
 const {productService} = require('../../../src/services')
 const { productListMock, oneProductMock } = require('../unitMocks/productMock')
 
-describe('Testes da camada Controllers',  () => {
+describe('Testes da camada ProductsControllers',  () => {
   describe('Verifica a listagem dos produtos', () => {
     it('Retorna status 200 ao listar todos os produtos', async () => {
       const req= {}
@@ -21,7 +21,7 @@ describe('Testes da camada Controllers',  () => {
       expect(res.json).to.have.been.calledWith(productListMock)
       sinon.restore()
     })
-    it('Testa o recebimento de um produto efetuando a busca por seu ID', async() => {
+    it('Testa a busca por ID', async() => {
       const res= {}
       const req = {
         params: { id: 2 }

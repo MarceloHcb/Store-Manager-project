@@ -1,5 +1,6 @@
 const errorMap = {
   PRODUCT_NOT_FOUND: 404,
+  SALE_NOT_FOUND: 404,
   REQUIRED: 400,
   LONG: 422,
   1: 422,

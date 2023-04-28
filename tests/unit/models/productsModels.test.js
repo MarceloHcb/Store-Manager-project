@@ -4,7 +4,7 @@ const {productModel} = require('../../../src/models')
 const connection = require('../../../src/models/connection')
 const { productListMock, newProductMock } = require('../unitMocks/productMock')
 
-describe('Testes da camada Models',  () => {
+describe('Testes da camada ProductsModels',  () => {
   describe('Verifica a listagem dos produtos', () => {
     it('Testa o recebimento de um array de produtos', async() => {
       sinon.stub(connection, 'execute').resolves([productListMock])
@@ -14,7 +14,7 @@ describe('Testes da camada Models',  () => {
       expect(result).to.have.length(3)
       sinon.restore();
     })
-    it('Testa o recebimento de um produto efetuando a busca por seu ID', async() => {
+    it('Testa a busca por ID', async() => {
       sinon.stub(connection, 'execute').resolves([productListMock])
       const result = await productModel.getProductById(1)          
       expect(result).to.be.deep.equal(productListMock[0])

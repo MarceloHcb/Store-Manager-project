@@ -1,6 +1,16 @@
 const { salesModel, productModel } = require('../models');
 const { validationSales } = require('./validations/validationSalesFields');
 
+const getAllSales = async () => {
+  const sales = await salesModel.getAllSales();
+  return { type: null, message: sales };
+};
+
+const getSaleById = async (id) => {
+  const sale = await salesModel.getSaleById(id);
+  return { type: null, message: sale };
+};
+
 const registerSale = async (sales) => {
   const allProducts = await productModel.getAllProducts();
   const errors = sales.map((sale) => validationSales(sale));  
@@ -22,4 +32,6 @@ const registerSale = async (sales) => {
 
 module.exports = {
   registerSale,
+  getAllSales,
+  getSaleById,
 };

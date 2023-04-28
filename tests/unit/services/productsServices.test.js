@@ -6,7 +6,7 @@ const {productService} = require('../../../src/services')
 const { productListMock } = require('../unitMocks/productMock')
 
 
-describe('Testes da camada Services',  () => {
+describe('Testes da camada ProductsServices',  () => {
   describe('Verifica a listagem dos produtos', () => {
     it('Testa o recebimento de um array de produtos', async() => {
       sinon.stub(productModel, 'getAllProducts').resolves(productListMock)
@@ -15,8 +15,9 @@ describe('Testes da camada Services',  () => {
       expect(result.message).to.deep.equal(productListMock)
       sinon.restore();
     })
-    it('Testa o recebimento de um produto efetuando a busca por seu ID', async() => {
+    it('Testa a busca por ID', async() => {
       sinon.stub(productModel, 'getAllProducts').resolves(productListMock)
+
       const result = await productService.getProductById(2)
       expect(result.type).to.be.equal(null)
       expect(result.message).to.deep.equal(productListMock[1])
