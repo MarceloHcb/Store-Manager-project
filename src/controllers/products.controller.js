@@ -36,10 +36,18 @@ const deleteProduct = async (req, res) => {
   return res.status(204).end();
 };
 
+const searchProduct = async (req, res) => {
+  const searchParam = req.query.q;
+  const { type, message } = await productService.searchProduct(searchParam);
+  if (type) return res.status(errorMap.mapError(type)).json({ message });
+  return res.status(200).json(message);
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   registerNewProduct,
   updateProduct,
   deleteProduct,
+  searchProduct,
 };

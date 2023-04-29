@@ -27,10 +27,17 @@ const deleteProduct = async (id) => {
   return `Product ${id} delected`;
 };
 
+const searchProduct = async (searchParam) => {
+  const [result] = await connection.execute('SELECT * FROM StoreManager.products;');
+  const searchedProducts = result.filter(({ name }) => name.includes(searchParam));
+  return searchedProducts;
+};
+
 module.exports = {
   getAllProducts,
   getProductById,
   registerNewProduct,
   updateProduct,
   deleteProduct,
+  searchProduct,
 };
