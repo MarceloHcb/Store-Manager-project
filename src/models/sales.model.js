@@ -42,6 +42,17 @@ const registerSale = async (sales) => {
   return { id, itemsSold: [...sales] };
 };
 
+const updateSale = async (id, sales) => {
+const promises = sales.map((sale) => {
+const { productId, quantity } = sale;
+return connection
+      .execute(`UPDATE StoreManager.sales_products SET quantity=?
+WHERE product_id=? AND sale_id=?;`, [quantity, productId, id]);
+  });  
+  await Promise.all(promises);  
+  return { saleId: id, itemsUpdated: [...sales] };
+};
+
 const deleteSale = async (id) => {
   await connection.execute('DELETE FROM StoreManager.sales WHERE id=?;', [id]);
   return `Sale ${id} delected`;
@@ -53,4 +64,5 @@ module.exports = {
   getSaleById,
   registerDate,
   deleteSale,
+  updateSale,
 };
